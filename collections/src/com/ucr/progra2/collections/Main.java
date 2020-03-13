@@ -1,6 +1,8 @@
 package com.ucr.progra2.collections;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
+import java.util.List;
 
 public class Main {
 
@@ -10,8 +12,22 @@ public class Main {
         corolla.color = "Red";
         corolla.type = "Sedan";
         corolla.model = "2012";
-        ArrayList cars = new ArrayList();
-        cars.add(corolla);
+        Car car2 = new Car();
+        car2.brand = "Nissan";
+        car2.color = "Red";
+        car2.type = "Sedan";
+        car2.model = "2012";
+//        System.out.println(cars.size());
+//        System.out.println(cars.get(0));
+//        System.out.println(cars.get(1));
+
+        List carsLinked = new LinkedList();
+        carsLinked.add(corolla);
+        carsLinked.add(car2);
+
+        System.out.println(carsLinked.size());
+        System.out.println(carsLinked.get(0));
+        System.out.println(carsLinked.get(1));
 
 
         /**
@@ -38,4 +54,8 @@ class Car {
     String color;
     String type;
     String model;
+
+    public String toString(){
+        return brand+","+model;
+    }
 }
