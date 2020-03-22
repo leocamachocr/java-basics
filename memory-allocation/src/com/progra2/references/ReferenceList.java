@@ -8,6 +8,7 @@ public class ReferenceList {
         list.add(Integer.valueOf(14));
         list.add(Integer.valueOf(17));
         list.add(Integer.valueOf(21));
+        list.print();
     }
 }
 
@@ -17,7 +18,7 @@ class List {
     public void add(Integer value) {
         Node next = new Node(value);
         if (node == null) {
-            node = next;
+            node = next;//la primera vez
         } else {
             node.next = next;
             next.previous = node;

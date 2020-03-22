@@ -11,7 +11,7 @@ public class StackOverflow {
         System.out.println("ex.equals(ex2) =" + (ex.accountNumber == (ex2.accountNumber)));
         ex2.accountNumber = ex2.accountNumber.intern();
         System.out.println("ex.equals(ex2) =" + (ex.accountNumber == (ex2.accountNumber)));
-//        System.out.println("ex.equals(ex2) ="+ex.accountNumber.equals(ex2.accountNumber));
+       System.out.println("ex.equals(ex2) ="+ex.accountNumber.equals(ex2.accountNumber));
 
         Object objectInstance = new Object();
         StackOverflow memoryInstance = new StackOverflow();
@@ -31,6 +31,7 @@ class BankAccount {
     String accountNumber;
 
     public boolean equals(Object value) {
+
 //        return this.accountNumber==(((BankAccount)value).accountNumber);
         return this.accountNumber.equals(((BankAccount) value).accountNumber);
     }
