@@ -1,7 +1,7 @@
 package com.ucr.progra2.collections;
 
 import java.util.ArrayList;
-import java.util.LinkedList;
+import java.util.Iterator;
 import java.util.List;
 
 public class Main {
@@ -12,30 +12,40 @@ public class Main {
         corolla.color = "Red";
         corolla.type = "Sedan";
         corolla.model = "2012";
-        Car car2 = new Car();
-        car2.brand = "Nissan";
-        car2.color = "Red";
-        car2.type = "Sedan";
-        car2.model = "2012";
+        Car tida = new Car();
+        tida.brand = "Nissan";
+        tida.color = "Red";
+        tida.type = "Sedan";
+        tida.model = "2012";
 //        System.out.println(cars.size());
 //        System.out.println(cars.get(0));
 //        System.out.println(cars.get(1));
 
-        List carsLinked = new LinkedList();
-        carsLinked.add(corolla);
-        carsLinked.add(car2);
+        List<Car> cars = createListInstance();
+        cars.add(corolla);
+        cars.add(tida);
+        cars.get(0);
+        System.out.println(cars.size());
+//        System.out.println(cars.get(0));
+//        System.out.println(cars.get(1));
 
-        System.out.println(carsLinked.size());
-        System.out.println(carsLinked.get(0));
-        System.out.println(carsLinked.get(1));
+        for (Object car : cars) {
+            System.out.println(car);
+        }
+        System.out.println();
+        Iterator it = cars.iterator();
+        while (it.hasNext()) {
+            System.out.println(it.next());
+        }
 
+        cars.forEach(car -> System.out.println(car));
 
         /**
          * Iteration
          * - for
          * - while
-         * - forEach
-         * - lambda expressions
+         * - forEach//opcionales
+         * - lambda expressions//opcionales
          *
          * Generics
          *
@@ -46,6 +56,11 @@ public class Main {
          */
 
     }
+
+    private static List createListInstance() {
+//        return  new LinkedList();
+        return new ArrayList();
+    }
 }
 
 
@@ -55,7 +70,7 @@ class Car {
     String type;
     String model;
 
-    public String toString(){
-        return brand+","+model;
+    public String toString() {
+        return brand + "," + model;
     }
 }

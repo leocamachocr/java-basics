@@ -1,4 +1,16 @@
 package com.ucr.progra2.poo.cars;
 
-public class Car {
+import java.util.ArrayList;
+
+public class Car{
+
+    private ArrayList<Mirror> mirror;
+
+    public ArrayList getMirror() {
+        return mirror;
+    }
+
+    public void setMirror(ArrayList mirrors) {
+        this.mirror = mirrors;
+    }
 }
