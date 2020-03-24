@@ -3,14 +3,13 @@
 
 An example how to solve a problem from a developer perspective tackling the solution from the input to output.
 
-
 ---
 
 ## Definition of problem (Requirements)
 Structure:
 * Hold an infinite list of integers.
 * Keeping the insertion order: Add 1, then 2: the list should contain [1,2].
-* Figured out what number is next to and what is the previous of a given number.
+* Figured out what number is next of and what is the previous of a given number.
 * List all the numbers contained into the list.
 * Remove a number from the list: remove only the numbers matching with the one indicated, the required nodes needs to be collapse.
 
@@ -112,7 +111,7 @@ TODO display uml diagram with node and class
 ---
 
 ### 2. Add
-Listing scenarios
+Tests scenarios
 1. Adding a number when list is empty.
 2. Adding a number when list is contains a number.
 3. Adding null number.
@@ -145,7 +144,7 @@ class ListImpl{
             this.node=node;
         }else{//second scenario
            node.setPrevious(this.node);
-           this.node.next=node;
+           this.node.setNext(node);
         }
     }
 }
@@ -167,7 +166,7 @@ class ListImpl{
             this.node=node;
         }else{//second scenario
            node.setPrevious(this.node);
-           this.node.next=node;
+           this.node.setNext(node);
         }
     }
 }
@@ -175,17 +174,17 @@ class ListImpl{
 
 ---
 
-### 2. Remove
-Listing scenarios
+### 3. Remove
+Tests scenarios
 1. Remove record at some middle position.
-2. Remove record at the last position.
+3. Remove record at the last position.
 3. Remove record at the first position.
 4. Remove null value.
 5. Remove non existing record.
 
 ---
 
-### 2. Remove: Remove record at some middle position.
+### 3. Remove: Remove record at some middle position.
 
 ````java
 class ListImpl{
@@ -193,7 +192,7 @@ class ListImpl{
     void remove(Integer value){
         Node current=node;
         while(current!=null){
-            if(current.value.equals(value)){
+            if(current.getValue().equals(value)){
                 current.getNext().setPrevious(current.getPrevious());//first scenario
                 current.getPrevious().setNext(current.getNext());
             }
@@ -205,8 +204,7 @@ class ListImpl{
 
 ---
 
-
-### 2. Remove: Remove record at the last position.
+### 3. Remove: Remove record at the last position.
 
 ````java
 class ListImpl{
@@ -214,7 +212,7 @@ class ListImpl{
     void remove(Integer value){
         Node current=node;
         while(current!=null){
-            if(current.value.equals(value)) {
+            if(current.getValue().equals(value)) {
                 if(current.getNext()!=null){
                     current.getNext().setPrevious(current.getPrevious());//first scenario
                     current.getPrevious().setNext(current.getNext());
@@ -231,7 +229,7 @@ class ListImpl{
 
 ---
 
-### 2. Remove: Remove record at the first position.
+### 3. Remove: Remove record at the first position.
 
 ````java
 class ListImpl{
@@ -239,7 +237,7 @@ class ListImpl{
     void remove(Integer value){
         Node current=node;
         while(current!=null){
-            if(current.value.equals(value)) {
+            if(current.getValue().equals(value)) {
                 if(current.getNext()!=null){
                     current.getNext().setPrevious(current.getPrevious());//first scenario
                     current.getPrevious().setNext(current.getNext());
@@ -258,7 +256,7 @@ class ListImpl{
 
 ---
 
-### 2. Remove: Remove null value.
+### 3. Remove: Remove null value.
 
 ````java
 class ListImpl{
@@ -267,7 +265,7 @@ class ListImpl{
         if(value==null)return;//fourth scenario
         Node current=node;
         while(current!=null){
-            if(current.value.equals(value)) {
+            if(current.getValue().equals(value)) {
                 if(current.getNext()!=null){
                     current.getNext().setPrevious(current.getPrevious());//first scenario
                     current.getPrevious().setNext(current.getNext());
@@ -285,7 +283,8 @@ class ListImpl{
 ````
 
 ---
-### 2. Remove: Remove non existing record.
+
+### 3. Remove: Remove non existing record.
 
 Redefining structure to define an scenario
 ````java
@@ -295,7 +294,7 @@ class ListImpl{
         if(value==null)return;//fourth scenario
         Node current=node;
         while(current!=null){
-            if(current.value.equals(value)) {
+            if(current.getValue().equals(value)) {
                 if(current.getNext()!=null){
                     current.getNext().setPrevious(current.getPrevious());//first scenario
                     current.getPrevious().setNext(current.getNext());
@@ -314,7 +313,8 @@ class ListImpl{
 ````
 
 ---
-### 2. Remove: Analize code to identify missing scenarios
+
+### 3. Remove: Analyze code to identify missing scenarios
 
 Redefining structure to define an scenario
 ````java
@@ -324,7 +324,7 @@ class ListImpl{
         if(value==null)return;//fourth scenario
         Node current=node;
         while(current!=null){
-            if(current.value.equals(value)) {
+            if(current.getValue().equals(value)) {
                 if(current.getNext()!=null){
                     current.getNext().setPrevious(current.getPrevious());//first scenario
                     current.getPrevious().setNext(current.getNext());
@@ -346,20 +346,122 @@ class ListImpl{
 
 ---
 
-
-
-### 3. Next Of
-Listing scenarios
-1. Get next of last record.
-1. Get next of first record.
-2. Get next of middle record.
+### 4. Next Of
+Tests scenarios
+1. Get next of middle record.
+2. Get next of first record.
+3. Get next of last record.
 4. Get next of non existing record.
 5. Get next of null value.
 
 ---
 
-### 4. Previous Of
-Listing scenarios
+### 4. Next of: Get next of middle record.
+
+````java
+class ListImpl{
+    Node node;
+    Integer nextOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+                return current.getNext().getValue();//first scenario
+            }
+            current=current.getNext();
+        }
+    return null;
+    }
+}
+````
+
+---
+
+### 4. Next of: Get next of first record.
+
+Do we need to do some changes to the second scenario?
+````java
+class ListImpl{
+    Node node;
+    Integer nextOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+                return current.getNext().getValue();//first and second scenario
+            }
+            current=current.getNext();
+        }
+    return null;
+    }
+}
+````
+
+---
+
+### 4. Next of: Get next of last record.
+
+````java
+class ListImpl{
+    Node node;
+    Integer nextOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+            //first, second  and third scenario
+                return current.getNext()!=null ? current.getNext().value : null;
+            }
+            current=current.getNext();
+        }
+    return null;
+    }
+}
+````
+---
+
+### 4. Next of: Get next of non existing record.
+
+````java
+class ListImpl{
+    Node node;
+    Integer nextOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+            //first, second  and third scenario
+                return current.getNext()!=null ? current.getNext().value : null;
+            }
+            current=current.getNext();
+        }
+    return null;//Alternatively we can throw an exception to indicate value not exist into the list
+    }
+}
+````
+
+---
+
+### 4. Next of: Get next of null value.
+
+````java
+class ListImpl{
+    Node node;
+    Integer nextOf(Integer value){
+        if(value==null) return null;//fifth scenario: 
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+            //first, second  and third scenario
+                return current.getNext()!=null ? current.getNext().value : null;
+            }
+            current=current.getNext();
+        }
+    return null;//Alternatively we can throw an exception to indicate value not exist into the list
+    }
+}
+````
+
+---
+
+### 5. Previous Of
+Tests scenarios
 1. Get previous of last record.
 1. Get previous of first record.
 2. Get previous of middle record.
@@ -368,13 +470,175 @@ Listing scenarios
 
 ---
 
-### 5. Print
-Listing scenarios
-1. Get previous of last record.
-1. Get previous of first record.
-2. Get previous of middle record.
-4. Get previous of non existing record.
-5. Get previous of null value.
+### 5. Previous of: Get previous of middle record.
+
+````java
+class ListImpl{
+    Node node;
+    Integer previousOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+                return current.getPrevious().getValue();//first scenario
+            }
+            current=current.getNext();
+        }
+    return null;
+    }
+}
+````
+
+---
+
+### 5. Previous of: Get previous of first record.
+
+Do we need to do some changes to the second scenario?
+````java
+class ListImpl{
+    Node node;
+    Integer previousOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+                return current.getPrevious()!=null ? current.getPrevious().value : null;//first and second scenario
+            }
+            current=current.getNext();
+        }
+    return null;
+    }
+}
+````
+---
+
+### 5. Previous of: Get previous of last record.
+
+````java
+class ListImpl{
+    Node node;
+    Integer previousOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+            //first, second  and third scenario
+                return current.getPrevious()!=null ? current.getPrevious().value : null;
+            }
+            current=current.getNext();
+        }
+    return null;
+    }
+}
+````
+
+---
+
+### 5. Previous of: Get previous of non existing record.
+
+````java
+class ListImpl{
+    Node node;
+    Integer previousOf(Integer value){
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+            //first, second  and third scenario
+                return current.getPrevious()!=null ? current.getPrevious().value : null;
+            }
+            current=current.getNext();
+        }
+    return null;//Alternatively we can throw an exception to indicate value not exist into the list
+    }
+}
+````
+
+---
+
+### 5. Previous of: Get previous of null value.
+
+````java
+class ListImpl{
+    Node node;
+    Integer previousOf(Integer value){
+        if(value==null) return null;//fifth scenario: 
+        Node current=node;
+        while(current!=null){
+            if(current.getValue().equals(value)){
+            //first, second  and third scenario
+                return current.getPrevious()!=null ? current.getPrevious().value : null;
+            }
+            current=current.getNext();
+        }
+    return null;//Alternatively we can throw an exception to indicate value not exist into the list
+    }
+}
+````
+
+---
+
+### 6. Print
+Tests scenarios
+1. Build string when list has values
+2. Build string when list does not has values
+
+---
+
+### 6. Print: Build string when list has values
+
+````java
+class ListImpl{
+    Node node;
+    String print(){
+        Node current=node;
+        String value = "";
+        while(current!=null){
+            current = current.getNext();
+            value+=value;//first scenario
+        }
+        return value;
+    }
+}
+````
+
+---
+
+### 6. Print: Build string when list does not has values
+
+````java
+class ListImpl{
+    Node node;
+    String print(){
+        if(node==null)return "";// second scenario
+        Node current=node;
+        String value = "";
+        while(current!=null){
+            current = current.getNext();
+            value+=value;//first scenario
+        }
+        return value;
+    }
+}
+````
+
+---
+
+### 6. Print: Optimizing
+If is possible we can fit the code according to language specification
+````java
+class ListImpl{
+    Node node;
+    String toString(){
+        if(node==null)return "";// second scenario
+        Node current=node;
+        String value = "";
+        while(current!=null){
+            current = current.getNext();
+            value+=value;//first scenario
+        }
+        return value;
+    }
+}
+````
+
+---
 
 
     
