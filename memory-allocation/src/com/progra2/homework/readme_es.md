@@ -1,81 +1,93 @@
 
-# Implement a List: Solving the problem
-
-An example how to solve a problem from a developer perspective tackling the solution from the input/output to final result enumerating all possible scenarios to develop the code.
+# Implementando una lista: Resolviendo el problema
+Un ejemplo de cómo resolver un problema desde la perspectiva del desarrollador abordando la solución desde la entrada/salida hasta el resultado final enumerando todos los escenarios posibles para desarrollar el código.
 
 ---
 
-## Definition of problem (Requirements)
-Structure:
-* Hold an infinite list of integers.
-* Keeping the insertion order: Add 1, then 2: the list should contain [1,2].
-* Figured out what number is next of and what is the previous of a given number.
-* List all the numbers contained into the list.
-* Remove a number from the list: remove only the numbers matching with the one indicated, the result nodes need to discard the removed one.
+## Agenda
+* Definición del Problema
+* Priorización de tareas
+* Definición de escenarios
+* Implementación
+
+---
+
+## Definición del Problema(Requisitos)
+Estructura:
+* Mantener una lista infinita de enteros.
+* Mantener el orden de inserción: Si se agrega 1, luego 2: la lista debe contener [1,2]
+* Identificar que numero esta "después de"  y cual está "antes de" un número dado.
+* Listar todos los números contenidos en la lista.
+* Remover un número desde la lista: Remover sólo los números que hagan par con el indicado, los nodos encontrados deben ser descartados por la lista.
 
 ___
 
-## Defining tasks
+## Definiendo tareas
 
-It is important to analyze the given information to divide the problem into sub-tasks, we can define the list of task based on the requirements
+
+Es importante analizar la información dada para dividir el problema en subtareas, podemos definir la lista de tareas en base a los requerimientos.
 
 ---
 
-## Defining tasks
+## Definiendo tareas
 
-#### 1. Create a class: A place to hold the completed list. This can be a class. Let's use _List_ as the name of the class for now.
+#### 1. Crear una clase: Un lugar para guardar la lista completa. Esto puede ser una clase. Usemos _List_ como nombre de la clase por ahora.
 
-    * Input: Integers processed asynchronously.
-     * Output: List of integers.
+    * Input: Enteros procesados asyncrónicamente.
+    * Output: Lista de enteros
  
- #### 2. Add: An entry point to populate elements to the list
+#### 2. Añade: Un punto de entrada para poblar los elementos de la lista
  
-     * Input: An integer.
-     * Output: List will contain the given number at the end of the list.
-      
+     * Input: Un número entero.
+     * Output: La lista contendrá el número dado al final de la lista.
+     
 ---
  
- ## Defining tasks
+## Definiendo tareas
  
- #### 3. Remove: An entry point to remove elements from the list
+#### 3. Quita: Un punto de entrada para eliminar elementos de la lista
  
-     * Input: An integer.
-     * Output: List without the given number.
+     * Input: Un número entero.
+     * Output: Lista sin el número dado.
  
- #### 4. Next Of: An entry point to obtain the next number of the given one.
+#### 4. Siguiente De: Un punto de entrada para obtener el siguiente número de uno dado.
  
-     * Input: An integer.
-     * Output: The number after the indicated one.
+     * Input: Un número entero.
+     * Output: El número después del indicado.
+---
+ 
+## Definiendo tareas
+ 
+#### 5. Anterior de: Un punto de entrada para obtener el anterior número de uno dado.
+ 
+     * Input: Un número entero.
+     * Output: El número anterior al indicado.
+  
+#### 6. Listar valores: Dada una lista de numeros ordenados, generar una representación
+ 
+     * Input: Números enteros.
+     * Output: Representación en forma de lista.
  
 ---
  
- ## Defining tasks
- 
- #### 5. Previous Of: An entry point to obtain the previous number of the given one.
- 
-     * Input: An integer.
-     * Output: The number before the indicated one.
- 
----
- 
- ### Using UML Class Diagram
- With the information we have until now, we can create a basic class UML diagram. Without attributes only actions defining inputs and outputs
+### Usando Diagrama de Clases UML
+ Con la información que tenemos hasta ahora, podemos crear un diagrama UML de clase básica. Sin atributos sólo acciones que definan las entradas y salidas.
  
  ![UML Diagram](https://drive.google.com/uc?export=view&id=1t7Rr0R9-KdGI4U8myKHKJA2SzzVA-LoZ)
  
 ---
  
- ### Definition of Priorities
- 1. Define structure
- 2. Add
- 3. Remove
- 4. NextOf
- 5. PreviousOf
- 6. Print
+ ### Definición de Prioridades
+ 1. Definir la estructura
+ 2. Agregar
+ 3. Quitar
+ 4. Siguiente de
+ 5. Anterior de
+ 6. Imprimir
  
 ---
  
- ### 1. Define structure
+ ### 1. Definir la estructura
  ````java
  interface List{ 
       void add(Integer value);
@@ -88,21 +100,21 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 1. Define structure: Alternatives
+ ### 1. Definir la estructura: Alternativas
  ![List Node Example](https://drive.google.com/uc?export=view&id=1WtZuIjemWR6OgTqlW5p0UpghY7ZAUD8u)
  
 ---
  
- ### 1. Define structure: Alternatives
+ ### 1. Definir la estructura: Alternativas
  ![List Node Example](https://drive.google.com/uc?export=view&id=1Xkm9VcsHZ95uMnk-GGPA6hHP-j4UZN9K)
  
 ---
  
- ### 1. Define structure
+ ### 1. Definir la estructura
  ![List Node Example](https://drive.google.com/uc?export=view&id=1KSg3w10dZCNSV2aIYXlcbAeOhSCU6G_e)
  
 ---
- ### 1. Define structure
+ ### 1. Definir la estructura
  
  ````java
  class Node{
@@ -120,15 +132,15 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 2. Add
- Tests scenarios
- 1. Adding a number when the list is empty.
- 2. Adding a number when the list contains a number.
- 3. Adding a null number.
+ ### 2. Agregar
+ Escenarios de prueba
+ 1. Agregando un número cuando la lista esta vacía.
+ 2. Agregando un número cuando la lista contiene números.
+ 3. Agregando un valor nulo.
  
 ---
  
- ### 2. Add: Adding a number when the list is empty
+ ### 2. Agregar: Agregando un número cuando la lista esta vacía
  ````java
  class ListImpl{
     private Node first;
@@ -141,9 +153,9 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 2. Add: Adding a number when the list contains a number
+ ### 2. Agregar: Agregando un número cuando la lista contiene números
  
- Redefining method to accomplish the scenarios
+ Redefiniendo el método para lograr los escenarios
  
  ````java
  class ListImpl{
@@ -165,9 +177,9 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 2. Add: Adding null number.
+ ### 2. Agregar: Agregando un valor nulo.
  
- Redefining method to accomplish the scenarios
+ Redefiniendo el método para lograr los escenarios
  
  ````java
  class ListImpl{
@@ -190,29 +202,29 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
-  We need to change original diagram
+  Necesitamos cambiar el diagrama original
  
   ![List Node Example](https://drive.google.com/uc?export=view&id=1GV2_OcXiGignEFwMOZwXSqah6V9OXgVi)
 
 
 ---
  
- ### 3. Remove
- Tests scenarios
- 1. Remove a node in a middle position.
- 3. Remove a node in the last position.
- 3. Remove a node in the first position.
- 4. Remove a null value.
- 5. Remove no existing node.
+ ### 3. Quitar
+ Escenarios de Prueba
+ 1. Quitar un nodo en posición media.
+ 2. Quitar un nodo en la última posición.
+ 3. Quitar un nodo en la primera posición.
+ 4. Quitar un valor nulo.
+ 5. Quitar un valor que no contiene la lista.
  
 ---
  
- ### 3. Remove: Remove node at some middle position.
+ ### 3. Quitar: Quitar un nodo en posición media.
  ![UML Diagram](https://drive.google.com/uc?export=view&id=1Qmzh8slG4HlmwHwVhPHrmOeM7OC1nEoM)
  
 ---
  
- ### 3. Remove: Remove node at some middle position.
+ ### 3. Quitar: Quitar un nodo en posición media.
  
  ````java
  class ListImpl{
@@ -233,12 +245,12 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 3. Remove: Remove node at the last position.
+ ### 3. Quitar: Quitar un nodo en la última posición.
  ![UML Diagram](https://drive.google.com/uc?export=view&id=1z2F8VTJ-4XSSQZbGAft_-rvcwUs_1Aw9)
  
 ---
  
- ### 3. Remove: Remove node at the last position.
+ ### 3. Quitar: Quitar un nodo en la última posición.
  
  ````java
  class ListImpl{
@@ -264,12 +276,12 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 3. Remove: Remove node at the first position.
+ ### 3. Quitar: Quitar un nodo en la primera posición.
  ![UML Diagram](https://drive.google.com/uc?export=view&id=10JXD4HKF8MWCveilnk31t1khoHfv6hOj)
  
 ---
  
- ### 3. Remove: Remove a node in the first position.
+ ### 3. Quitar: Quitar un nodo en la primera posición.
  
  ````java
  class ListImpl{
@@ -285,7 +297,7 @@ It is important to analyze the given information to divide the problem into sub-
                      current.getPrevious().setNext(null);
                  }else if(current.getNext()!=null && current.getPrevious()==null ){//second scenario
                      current.getNext().setPrevious(null);
-                     node=current.getNext();//Move reference for first node
+                     first=current.getNext();//Move reference for first node
                  }
              }
              current=current.getNext();
@@ -297,7 +309,7 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 3. Remove: Remove null value.
+ ### 3. Quitar: Quitar un valor nulo.
  
  ````java
  class ListImpl{
@@ -314,7 +326,7 @@ It is important to analyze the given information to divide the problem into sub-
                      current.getPrevious().setNext(null);
                  }else if(current.getNext()!=null && current.getPrevious()==null ){//third scenario
                      current.getNext().setPrevious(null);
-                     node=current.getNext();//Move reference for first node
+                     first=current.getNext();//Move reference for first node
                  }
              }
              current=current.getNext();
@@ -326,9 +338,9 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 3. Remove: Remove non-existing node.
+ ### 3. Quitar: Quitar un valor que no contiene la lista.
  
- Redefining structure to define a scenario
+ Redefiniendo la estructura para ajustar el escenario
  ````java
  class ListImpl{
      Node first;
@@ -344,7 +356,7 @@ It is important to analyze the given information to divide the problem into sub-
                      current.getPrevious().setNext(null);
                  }else if(current.getNext()!=null && current.getPrevious()==null ){//third scenario
                      current.getNext().setPrevious(null);
-                     node=current.getNext();//Move reference for first node
+                     first=current.getNext();//Move reference for first node
                  }
                  return true;//fifth scenario
              }
@@ -357,12 +369,13 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 3. Remove: Analyze code to identify missing scenarios
+ ### 3. Quitar: Analizar código para implementar escenarios no contemplados
  
- Redefining structure to define a scenario
+ Redefiniendo la estructura para ajustar el escenario
  ````java
  class ListImpl{
      Node first;
+     Node last;
      boolean remove(Integer value){
          if(value==null)return false;//fourth scenario
          Node current=first;
@@ -373,11 +386,14 @@ It is important to analyze the given information to divide the problem into sub-
                      current.getPrevious().setNext(current.getNext());
                  }else if(current.getNext()==null && current.getPrevious()!=null ){//second scenario
                      current.getPrevious().setNext(null);
+                     last=current.getPrevious();//Move reference for first node
                  }else if(current.getNext()!=null && current.getPrevious()==null ){//third scenario
                      current.getNext().setPrevious(null);
-                     node=current.getNext();//Move reference for first node
+                     first=current.getNext();//Move reference for first node
                  }else{//sixth scenario: list only have one node
-                     node=null;
+                     first=null;
+                     last=null;
+
                  }
                  return true;//fifth scenario
              }
@@ -390,17 +406,17 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 4. Next Of
- Tests scenarios
- 1. Get nextOf from a middle node.
- 2. Get nextOf from the first node.
- 3. Get nextOf from the last node.
- 4. Get the nextOf from the non-existing node.
- 5. Get the nextOf from the null value.
+ ### 4. Siguiente de
+ Escenarios de Prueba
+ 1. Obtener el siguiente de un nodo medio.
+ 2. Obtener el siguiente del primer nodo.
+ 3. Obtener el siguiente del último nodo.
+ 4. Obtener el siguiente de un nodo no existente.
+ 5. Obtener el siguiente de un valor nulo.
  
 ---
  
- ### 4. Next of: Get nextOf from a middle node.
+ ### 4. Siguiente de: Obtener el siguiente de un nodo medio.
  
  ````java
  class ListImpl{
@@ -420,9 +436,9 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 4. Next of: Get nextOf from the first node.
+ ### 4. Siguiente de: Obtener el siguiente del primer nodo.
  
- Do we need to do some changes to the second scenario?
+ ¿Necesitamos cambiar algo al segundo escenario?
  ````java
  class ListImpl{
      Node first;
@@ -441,7 +457,7 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 4. Next of: Get nextOf from the last node.
+ ### 4. Siguiente de: Obtener el siguiente del último nodo.
  
  ````java
  class ListImpl{
@@ -461,7 +477,7 @@ It is important to analyze the given information to divide the problem into sub-
  ````
 ---
  
- ### 4. Next of: Get nextOf from a non-existing node.
+ ### 4. Siguiente de: Obtener el siguiente de un nodo no existente.
  
  ````java
  class ListImpl{
@@ -482,7 +498,7 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 4. Next of: Get nextOf from a null value.
+ ### 4. Siguiente de: Obtener el siguiente de un valor nulo.
  
  ````java
  class ListImpl{
@@ -504,17 +520,17 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 5. Previous Of
- Tests scenarios
- 1. Get previous of the last node.
- 1. Get previous of the first node.
- 2. Get previous of a middle node.
- 4. Get previous of non-existing node.
- 5. Get previous of null value.
- 
+ ### 5. Anterior de
+Escenarios de Prueba
+1. Obtener el anterior de un nodo medio.
+2. Obtener el anterior del primer nodo.
+3. Obtener el anterior del último nodo.
+4. Obtener el anterior de un nodo no existente.
+5. Obtener el anterior de un valor nulo.
+  
 ---
  
- ### 5. Previous of: Get previous of middle node.
+ ### 5. Anterior de: Obtener el anterior de un nodo medio.
  
  ````java
  class ListImpl{
@@ -534,9 +550,9 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 5. Previous of: Get previous of the first node.
+ ### 5. Anterior de:  Obtener el anterior del primer nodo.
  
- Do we need to do some changes to the second scenario?
+ ¿Necesitamos cambiar algo al segundo escenario?
  ````java
  class ListImpl{
      Node first;
@@ -554,7 +570,7 @@ It is important to analyze the given information to divide the problem into sub-
  ````
 ---
  
- ### 5. Previous of: Get previous of the last node.
+ ### 5. Anterior de: Obtener el anterior del último nodo.
  
  ````java
  class ListImpl{
@@ -575,7 +591,7 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 5. Previous of: Get previous of non-existing node.
+ ### 5. Anterior de: Obtener el anterior de un nodo no existente.
  
  ````java
  class ListImpl{
@@ -596,7 +612,7 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 5. Previous of: Get previous of null value.
+ ### 5. Anterior de: Obtener el anterior de un valor nulo.
  
  ````java
  class ListImpl{
@@ -618,14 +634,14 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 6. Print
- Tests scenarios
- 1. Build a string when the list has values
- 2. Build a string when the list does not has values
+ ### 6. Imprimir
+ Escenarios de Prueba
+ 1. Construye una cadena cuando la lista tenga valores.
+ 2. Construye una cadena cuando la lista no tiene valores.
  
 ---
  
- ### 6. Print: Build string when the list has values
+ ### 6. Imprimir: Construye una cadena cuando la lista tenga valores.
  
  ````java
  class ListImpl{
@@ -644,7 +660,7 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 6. Print: Build string when the list does not has values
+ ### 6. Imprimir: Construye una cadena cuando la lista no tiene valores.
  
  ````java
  class ListImpl{
@@ -664,8 +680,8 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
  
- ### 6. Print: Optimizing
- We can fit the code according to the language specification
+ ### 6. Imprimir: Optimizando
+ Podemos ajustar el código de acuerdo con la especificación del lenguaje
  ````java
  class ListImpl{
      Node node;
@@ -684,7 +700,7 @@ It is important to analyze the given information to divide the problem into sub-
  
 ---
 
-### Some interest links
+### Enlaces de interés
 
 https://www.baeldung.com/java-test-driven-list
 
